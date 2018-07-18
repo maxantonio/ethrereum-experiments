@@ -1,10 +1,10 @@
 pragma solidity ^0.4.21;
 
-contract Metam {
+contract Metam{
     // Public variables of the token
-    string public name;
-    string public symbol;
-    uint8 public decimals = 4;
+    string constant name = "Metam";
+    string constant symbol = "MTMX";
+    uint8 constant decimals = 4;
     // 18 decimals is the strongly suggested default, avoid changing it
     uint256 public totalSupply;
 
@@ -23,15 +23,14 @@ contract Metam {
      *
      * Initializes contract with initial supply tokens to the creator of the contract
      */
-    function Metam(
-        uint256 initialSupply
+    constructor(
     ) public {
-        totalSupply = initialSupply * 10 ** uint256(decimals);  // Update total supply with the decimal amount
+        totalSupply = 100000000 * 10 ** uint256(decimals);  // Update total supply with the decimal amount
         balanceOf[msg.sender] = totalSupply;                // Give the creator all initial tokens
-        name = "Metam";
-        // Set the name for display purposes
-        symbol = "MTMX";
-        // Set the symbol for display purposes
+        // name = "Metam";
+        // // Set the name for display purposes
+        // symbol = "MTMX";
+        // // Set the symbol for display purposes
     }
 
     /**
@@ -96,8 +95,6 @@ contract Metam {
         allowance[msg.sender][_spender] = _value;
         return true;
     }
-
-
 
     /**
      * Destroy tokens
